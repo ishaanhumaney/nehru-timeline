@@ -1,0 +1,119 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: #f4f5f7;
+    color: #333;
+    line-height: 1.6;
+    padding: 40px 20px;
+}
+
+.timeline-container {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.timeline-title {
+    text-align: center;
+    margin-bottom: 40px;
+    color: #1a1a1a;
+}
+
+/* Vertical Spine */
+.timeline {
+    position: relative;
+    border-left: 3px solid #cbd5e1;
+    margin-left: 20px;
+    padding-left: 30px;
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+/* Hide the native radio buttons */
+.timeline-item input[type="radio"] {
+    display: none;
+}
+
+/* Header/Toggle Area */
+.timeline-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background: #fff;
+    padding: 15px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.04);
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.timeline-header:hover {
+    background: #f8fafc;
+}
+
+.date {
+    font-weight: 700;
+    color: #2563eb;
+    font-size: 1.1rem;
+}
+
+.title {
+    font-weight: 600;
+    color: #1e293b;
+}
+
+/* Timeline Custom Nodes/Dots */
+.timeline-header::before {
+    content: '';
+    position: absolute;
+    left: -41px; 
+    top: 20px;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: #fff;
+    border: 3px solid #2563eb;
+    transition: background 0.2s ease;
+    z-index: 2;
+}
+
+/* Accordion Expand/Collapse Logic via max-height transition */
+.timeline-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-in-out;
+    background: #fff;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    margin-top: -4px; /* visually blends it with the header above */
+    box-shadow: 0 4px 6px rgba(0,0,0,0.04);
+}
+
+/* Extra wrapper inside content prevents padding from breaking max-height: 0 */
+.content-inner {
+    padding: 20px;
+    border-top: 1px solid #f1f5f9;
+    color: #475569;
+}
+
+/* Active State Styles */
+.timeline-item input[type="radio"]:checked ~ .timeline-content {
+    max-height: 200px; /* high enough to fit content without clipping */
+}
+
+.timeline-item input[type="radio"]:checked ~ .timeline-header {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    background: #f8fafc;
+}
+
+.timeline-item input[type="radio"]:checked ~ .timeline-header::before {
+    background: #2563eb;
+}
