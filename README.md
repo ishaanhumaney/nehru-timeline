@@ -38,11 +38,7 @@ open index.html
 ```
 
 ## Project Structure
-
 ```bash
-├── .github/
-│   └── workflows/
-│       └── ci.yml      # Automatic HTML/CSS validation engine
 ├── .gitignore          # Excludes environment and OS artifacts
 ├── README.md           # Documentation
 ├── index.html          # Semantic structure and historical copy
